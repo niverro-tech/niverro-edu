@@ -33,11 +33,16 @@
     right: 0;
     width: 380px;
     height: 500px;
+    max-width: calc(100vw - 3rem);
+    /* mobile constraint */
+    max-height: calc(100vh - 8rem);
+    /* mobile constraint */
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 1.5rem;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-    display: none; /* hidden by default */
+    display: none;
+    /* hidden by default */
     flex-direction: column;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -45,9 +50,36 @@
     animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Mobile optimizations */
+@media (max-width: 480px) {
+    #chatbot-window {
+        position: fixed;
+        bottom: 5.5rem;
+        right: 1rem;
+        width: calc(100vw - 2rem);
+        max-width: none;
+        height: 70vh;
+        max-height: 80vh;
+        z-index: 1001;
+    }
+
+    #chatbot-container {
+        bottom: 1rem;
+        right: 1rem;
+    }
+}
+
+
 @keyframes slideIn {
-    from { opacity: 0; transform: scale(0.8) translateY(20px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
 #chatbot-header {
